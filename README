@@ -1,19 +1,13 @@
-Test Driven Development By Example
+h1. Test Driven Development By Example
 
-Enviroment
+h2. 環境概要
 
 xampp
-
-PHP 5.3.5 (cli) (built: Jan  6 2011 17:54:09)
-Copyright (c) 1997-2010 The PHP Group
-Zend Engine v2.3.0, Copyright (c) 1998-2010 Zend Technologies
-    with Xdebug v2.1.0rc1, Copyright (c) 2002-2010, by Derick Rethans
-
-PHPUnit 3.5.15 by Sebastian Bergmann.
-
+PHP 5.3.5
+PHPUnit 3.5.15
 Eclipse with MakeGood
 PHP include path C:\xammp\php\PEAR
 
-<hr />
-
-<s>取り消し線テスト</s>
+h2. TODO
+* ui liテスト
+* -ui li取り消しテスト
