@@ -1,6 +1,8 @@
 <?php
 class Dollar {
 
+    public $amount;
+
     /**
      *
      * 価格に口数をかけて金額を変更する
