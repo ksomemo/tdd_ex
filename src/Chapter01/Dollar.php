@@ -1,7 +1,7 @@
 <?php
 class Dollar {
 
-    public $amount = 10;
+    public $amount;
 
     /**
      *
@@ -9,6 +9,6 @@ class Dollar {
      * @param int $multiplier 口数
      */
     public function times($multiplier) {
-        ;
+        $this->amount = 10;
     }
 }
