@@ -9,6 +9,6 @@ class Dollar {
      * @param int $multiplier 口数
      */
     public function times($multiplier) {
-        $this->amount = 10;
+        $this->amount = 5 * $multiplier;
     }
 }
