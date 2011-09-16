@@ -1,7 +1,7 @@
 <?php
 class Dollar {
 
-    public $amount;
+    private $amount;
 
     public function __construct($amount) {
         $this->amount = $amount;
