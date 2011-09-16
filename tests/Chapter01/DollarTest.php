@@ -18,4 +18,11 @@ class DollarTest extends PHPUnit_Framework_TestCase {
 
     }
 
+    public function testEquality() {
+        $dollar = new Dollar(5);
+
+        $this->assertTrue($dollar->equals(new Dollar(5)), "等しくない");
+        $this->assertFalse($dollar->equals(new Dollar(6)), "等しい");
+    }
+
 }
