@@ -4,8 +4,6 @@ require_once 'Money.php';
 
 class Dollar extends Money {
 
-    private $amount;
-
     public function __construct($amount) {
         $this->amount = $amount;
     }
