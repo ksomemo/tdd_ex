@@ -1,6 +1,6 @@
 <?php
 
-require_once '/src/Chapter01/Dollar.php';
+require_once '/src/Part1/Dollar.php';
 
 class DollarTest extends PHPUnit_Framework_TestCase {
 
