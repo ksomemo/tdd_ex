@@ -7,9 +7,9 @@ class Money {
     /**
      *
      * 総額の等価性判断
-     * @param unknown_type $dollar
+     * @param Money $money
      */
-    public function equals($dollar) {
-        return $this->amount === $dollar->amount;
+    public function equals($money) {
+        return $this->amount === $money->amount;
     }
 }
