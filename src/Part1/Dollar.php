@@ -14,7 +14,7 @@ class Dollar extends Money {
      * @param int $multiplier 口数
      */
     public function times($multiplier) {
-        return new Dollar($this->amount * $multiplier);
+        return Money::dollar($this->amount * $multiplier);
     }
 
 }

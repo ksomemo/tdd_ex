@@ -25,4 +25,5 @@ h2. TODO
 * timesの一般化
 * -FrancとDollarの比較-
 * 通貨
+* testFrancMultiplicationの削除
 
