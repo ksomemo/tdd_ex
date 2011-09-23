@@ -11,17 +11,24 @@ class DollarTest extends PHPUnit_Framework_TestCase {
     public function testMultiplication() {
         $fives = Money::dollar(5);
 
-        $this->assertEquals(Money::dollar(10), $fives->times(2), "金額が期待通り(10)でない");
-        $this->assertEquals(Money::dollar(15), $fives->times(3), "金額が期待通り(15)でない");
+        $this->assertEquals(Money::dollar(10), $fives->times(2), '金額が期待通り(10)でない');
+        $this->assertEquals(Money::dollar(15), $fives->times(3), '金額が期待通り(15)でない');
     }
 
     public function testEquality() {
         $dollar = Money::dollar(5);
 
-        $this->assertTrue($dollar->equals(Money::dollar(5)),  "等しくない");
-        $this->assertFalse($dollar->equals(Money::dollar(6)), "等しい");
-        $this->assertFalse($dollar->equals(Money::franc(5)),  "５ドルと５フランが等しい");
-        $this->assertFalse($dollar->equals(Money::franc(6)),  "５ドルと６フランが等しい");
+        $this->assertTrue($dollar->equals(Money::dollar(5)),  '等しくない');
+        $this->assertFalse($dollar->equals(Money::dollar(6)), '等しい');
+        $this->assertFalse($dollar->equals(Money::franc(5)),  '５ドルと５フランが等しい');
+        $this->assertFalse($dollar->equals(Money::franc(6)),  '５ドルと６フランが等しい');
     }
 
+    /**
+     *
+     * 通貨の種類
+     */
+    public function testCurrency() {
+        $this->assertEquals('USD', Money::dollar(1)->currency());
+    }
 }

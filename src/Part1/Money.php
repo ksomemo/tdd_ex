@@ -2,7 +2,15 @@
 abstract class Money {
 
     // 総額
-    protected  $amount;
+    protected $amount;
+
+    // 通貨の種類
+    protected $currency;
+
+    public function __construct($amount, $currency) {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
 
     /**
      *
@@ -22,12 +30,20 @@ abstract class Money {
 
     /**
      *
+     * 通貨の種類を取得する
+     */
+    public function currency() {
+        return $this->currency;
+    }
+
+    /**
+     *
      * ドルオブジェクトの生成
      * @param int $amount 総額
      * @return Dollar
      */
     public static function dollar($amount) {
-        return new Dollar($amount);
+        return new Dollar($amount, 'USD');
     }
 
     /**
@@ -37,6 +53,6 @@ abstract class Money {
      * @return Franc
      */
     public static function franc($amount) {
-        return new Franc($amount);
+        return new Franc($amount, 'CHF');
     }
 }
