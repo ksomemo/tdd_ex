@@ -22,6 +22,12 @@ class FrancTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($franc->equals(Money::franc(6)), '等しい(フラン)');
     }
 
+    public function testDifferentClassEquality() {
+        $money = new Money(10, 'CHF');
+
+        $this->assertTrue($money->equals(new Franc(10, 'CHF')), '10フラン(Money)と10フラン(Franc)が等しくない');
+    }
+
     /**
      *
      * 通貨の種類

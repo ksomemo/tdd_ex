@@ -1,5 +1,5 @@
 <?php
-abstract class Money {
+class Money {
 
     // 総額
     protected $amount;
@@ -19,14 +19,16 @@ abstract class Money {
      */
     public function equals($money) {
         return $this->amount === $money->amount
-            && get_class($this) === get_class($money);
+            && $this->currency() === $money->currency();
     }
 
     /**
      *
      * 総額の倍変更
      */
-    abstract public function times($multiplier);
+    public function times($multiplier) {
+        return null;
+    }
 
     /**
      *

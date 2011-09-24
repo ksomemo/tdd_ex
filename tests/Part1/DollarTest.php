@@ -24,6 +24,12 @@ class DollarTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($dollar->equals(Money::franc(6)),  '５ドルと６フランが等しい');
     }
 
+    public function testDifferentClassEquality() {
+        $money = new Money(10, 'USD');
+
+        $this->assertTrue($money->equals(new Dollar(10, 'USD')), '10フラン(Money)と10フラン(Franc)が等しくない');
+    }
+
     /**
      *
      * 通貨の種類
