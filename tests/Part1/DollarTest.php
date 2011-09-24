@@ -11,16 +11,18 @@ class DollarTest extends PHPUnit_Framework_TestCase {
      */
     public function testMultiplication() {
         $fives = Money::dollar(5);
-
         $this->assertEquals(Money::dollar(10), $fives->times(2), '金額が期待通り(10)でない');
         $this->assertEquals(Money::dollar(15), $fives->times(3), '金額が期待通り(15)でない');
 
         $fives = Money::franc(5);
-
         $this->assertEquals(Money::franc(10), $fives->times(2), '金額が期待通り(10フラン)でない');
         $this->assertEquals(Money::franc(15), $fives->times(3), '金額が期待通り(15フラン)でない');
     }
 
+    /**
+     *
+     * 等価性のテスト
+     */
     public function testEquality() {
         $dollar = Money::dollar(5);
 
@@ -28,11 +30,6 @@ class DollarTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($dollar->equals(Money::dollar(6)), '等しい');
         $this->assertFalse($dollar->equals(Money::franc(5)),  '５ドルと５フランが等しい');
         $this->assertFalse($dollar->equals(Money::franc(6)),  '５ドルと６フランが等しい');
-
-        $franc = Money::franc(5);
-
-        $this->assertTrue($franc->equals(Money::franc(5)),  '等しくない(フラン)');
-        $this->assertFalse($franc->equals(Money::franc(6)), '等しい(フラン)');
     }
 
     /**
