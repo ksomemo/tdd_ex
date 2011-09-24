@@ -1,9 +1,8 @@
 <?php
 
-require_once '/src/Part1/Dollar.php';
-require_once '/src/Part1/Franc.php';
+require_once '/src/Part1/Money.php';
 
-class DollarTest extends PHPUnit_Framework_TestCase {
+class MoneyTest extends PHPUnit_Framework_TestCase {
 
     /**
      *
