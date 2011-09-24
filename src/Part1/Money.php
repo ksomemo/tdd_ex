@@ -27,7 +27,7 @@ class Money {
      * 総額の倍変更
      */
     public function times($multiplier) {
-        return null;
+        return new Money($this->amount * $multiplier, $this->currency);
     }
 
     /**
@@ -45,7 +45,7 @@ class Money {
      * @return Dollar
      */
     public static function dollar($amount) {
-        return new Dollar($amount, 'USD');
+        return new Money($amount, 'USD');
     }
 
     /**
@@ -55,6 +55,6 @@ class Money {
      * @return Franc
      */
     public static function franc($amount) {
-        return new Franc($amount, 'CHF');
+        return new Money($amount, 'CHF');
     }
 }
