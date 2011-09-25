@@ -45,7 +45,8 @@ class MoneyTest extends PHPUnit_Framework_TestCase {
      * 単純な加法のテスト
      */
     public function testSimpleAddition() {
-        $sum = Money::dollar(5)->plus(Money::dollar(5));
+        $five =Money::dollar(5);
+        $sum = $five->plus($five);
         $this->assertEquals(Money::dollar(10), $sum, '合計が10ドルでない');
     }
 }
