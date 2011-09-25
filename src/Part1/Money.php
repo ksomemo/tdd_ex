@@ -1,5 +1,8 @@
 <?php
-class Money {
+
+require_once 'Expression.php';
+
+class Money implements Expression {
 
     // 総額
     protected $amount;
@@ -56,5 +59,14 @@ class Money {
      */
     public static function franc($amount) {
         return new Money($amount, 'CHF');
+    }
+
+    /**
+     *
+     * 加法
+     * @param Money $addend
+     */
+    public function plus($addend) {
+        return new Money($this->amount + $addend->amount, $this->currency);
     }
 }
