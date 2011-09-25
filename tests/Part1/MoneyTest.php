@@ -1,6 +1,7 @@
 <?php
 
 require_once '/src/Part1/Money.php';
+require_once '/src/Part1/Bank.php';
 
 class MoneyTest extends PHPUnit_Framework_TestCase {
 
@@ -47,6 +48,8 @@ class MoneyTest extends PHPUnit_Framework_TestCase {
     public function testSimpleAddition() {
         $five =Money::dollar(5);
         $sum = $five->plus($five);
-        $this->assertEquals(Money::dollar(10), $sum, '合計が10ドルでない');
+        $bank = new Bank();
+        $reduce = $bank->reduce($sum, 'USD');
+        $this->assertEquals(Money::dollar(10), $reduce, '合計が10ドルでない');
     }
 }

@@ -1,5 +1,8 @@
 <?php
-class Money {
+
+require_once 'Expression.php';
+
+class Money implements Expression {
 
     // 総額
     protected $amount;
