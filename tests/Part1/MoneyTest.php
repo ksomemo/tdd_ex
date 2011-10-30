@@ -52,4 +52,45 @@ class MoneyTest extends PHPUnit_Framework_TestCase {
         $reduce = $bank->reduce($sum, 'USD');
         $this->assertEquals(Money::dollar(10), $reduce, '合計が10ドルでない');
     }
+
+    /**
+     *
+     * 加法後の式(Sum)の被加数と加数のテスト
+     */
+    public function testPlusReturnsSum() {
+        $five = Money::dollar(5);
+        $result = $five->plus($five);
+        $sum = $result;
+        $this->assertAttributeEquals($five, 'augend', $sum, '被加数が5ドルでない');
+        $this->assertAttributeEquals($five, 'addend', $sum, '被加数が5ドルでない');
+    }
+
+    /**
+     *
+     * 式SumのMoneyへの変換
+     */
+    public function testReduceSum() {
+        $sum = new Sum(Money::dollar(3), Money::dollar(4));
+        $bank = new Bank();
+        $result = $bank->reduce($sum, 'USD');
+        $this->assertEquals(Money::dollar(7), $result);
+    }
+
+    /**
+     *
+     * 式としてのMoneyをMoneyへ変換
+     */
+    function testReduceMoney() {
+        $bank = new Bank();
+        $result = $bank->reduce(Money::dollar(1), 'USD');
+        $this->assertEquals(Money::dollar(1), $result);
+    }
+
+    /**
+     * amountのgetterテスト
+     */
+    public function testAmountGetter() {
+        $five = Money::dollar(5);
+        $this->assertEquals(5, $five->amount());
+    }
 }

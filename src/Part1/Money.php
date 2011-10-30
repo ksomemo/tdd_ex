@@ -1,7 +1,10 @@
 <?php
 
 require_once 'Expression.php';
-
+require_once 'Sum.php';
+/**
+ * 通貨
+ */
 class Money implements Expression {
 
     // 総額
@@ -43,6 +46,14 @@ class Money implements Expression {
 
     /**
      *
+     * 通貨の金額を取得する
+     */
+    public function amount() {
+        return $this->amount;
+    }
+
+    /**
+     *
      * ドルオブジェクトの生成
      * @param int $amount 総額
      * @return Dollar
@@ -66,7 +77,15 @@ class Money implements Expression {
      * 加法
      * @param Money $addend
      */
-    public function plus($addend) {
-        return new Money($this->amount + $addend->amount, $this->currency);
+    public function plus(Money $addend) {
+        return new Sum($this, $addend);
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Expression::reduce()
+     */
+    public function reduce($to) {
+        return $this;
     }
 }

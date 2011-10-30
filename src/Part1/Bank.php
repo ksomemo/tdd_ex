@@ -14,6 +14,6 @@ class Bank {
      * @param String $to 通貨の種類
      */
     public function reduce(Expression $source, $to) {
-        return Money::dollar(10);
+        return $source->reduce($to);
     }
 }
