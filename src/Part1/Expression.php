@@ -6,5 +6,5 @@ interface Expression {
      *
      * @param String $to 通貨の種類
      */
-    public function reduce($to);
+    public function reduce(Bank $bank, $to);
 }

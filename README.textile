@@ -18,9 +18,9 @@ h2. TODO
 * -Dollarの副作用-
 * Moneyの丸め処理
 * -equals()-
-* hashCode()
+* -hashCode()※phpは無理-
 * nullとの等価性
-* オブジェクトとの等価性
+* -オブジェクトとの等価性※phpでも実現できるが、実用は無理-
 * -5 CHF * 2 = 10 CHF-
 * -DollarとFrancの重複-
 * -equalsの一般化-
@@ -28,4 +28,6 @@ h2. TODO
 * -FrancとDollarの比較-
 * -通貨-
 * -testFrancMultiplicationの削除-
-
+* -Bank.reduce(Money)-
+* -通貨交換によるMoneyの交換-
+* -reduce(Bank, String)-

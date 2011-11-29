@@ -85,7 +85,9 @@ class Money implements Expression {
      * (non-PHPdoc)
      * @see Expression::reduce()
      */
-    public function reduce($to) {
-        return $this;
+    public function reduce(Bank $bank, $to) {
+        $rate = $bank->rate($this->currency, $to);
+
+        return new Money($this->amount / $rate, $to);
     }
 }

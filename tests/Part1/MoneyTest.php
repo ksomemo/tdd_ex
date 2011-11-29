@@ -2,6 +2,7 @@
 
 require_once '/src/Part1/Money.php';
 require_once '/src/Part1/Bank.php';
+require_once '/src/Part1/Pair.php';
 
 class MoneyTest extends PHPUnit_Framework_TestCase {
 
@@ -92,5 +93,58 @@ class MoneyTest extends PHPUnit_Framework_TestCase {
     public function testAmountGetter() {
         $five = Money::dollar(5);
         $this->assertEquals(5, $five->amount());
+    }
+
+    /**
+     *
+     * 2フランを1ドルに換金する
+     */
+    public function testReduceMoneyDifferentCurrency() {
+        $bank = new Bank();
+        $bank->addRate('CHF', 'USD', 2);
+        $result = $bank->reduce(Money::franc(2), 'USD');
+        $this->assertEquals(Money::dollar(1), $result, '1ドルでない');
+    }
+
+    /**
+     * ペアのテスト(オブジェクトの比較テスト用)
+     */
+    public function testPairEquals() {
+        $p1 = new Pair('USD', 'CHF');
+        $p2 = new Pair('USD', 'CHF');
+
+        $this->assertEquals($p1, $p2);
+        $this->assertTrue($p1 == $p2);
+        $this->assertTrue($p1 === $p1);
+        $this->assertFalse($p1 === $p2);
+
+        $p3 = new Pair('CHF', 'USD');
+        $this->assertNotEquals($p1, $p3);
+    }
+
+    /**
+     * SplObjectStorageのテスト
+     */
+    public function testStorageEquals() {
+        $storage = new SplObjectStorage();
+        $pair = new Pair('USD', 'CHF');
+        $storage->offsetSet($pair, 1);
+
+        $this->assertTrue($storage->offsetExists($pair));
+        $this->assertFalse($storage->offsetExists(new Pair('USD', 'CHF')));
+
+        $this->assertEquals(1, $storage->offsetGet($pair));
+
+        foreach ($storage as $key => $value) {
+            $this->assertEquals(new Pair('USD', 'CHF'), $value);
+        }
+    }
+
+    /**
+     * 同じ通貨に換金したときのレートが1であるか
+     */
+    public function testIdentyRate() {
+        $bank = new Bank();
+        $this->assertEquals(1, $bank->rate('USD', 'USD'));
     }
 }
