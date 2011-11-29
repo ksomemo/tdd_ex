@@ -31,3 +31,4 @@ h2. TODO
 * -Bank.reduce(Money)-
 * -通貨交換によるMoneyの交換-
 * -reduce(Bank, String)-
+* Sum.plus

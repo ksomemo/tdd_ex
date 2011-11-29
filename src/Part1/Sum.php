@@ -24,4 +24,20 @@ class Sum implements Expression {
 
       return new Money($amount, $to);
   }
+
+    /**
+    * (non-PHPdoc)
+    * @see Expression::plus()
+    */
+    public function plus(Expression $addend) {
+        return new Sum($this, $addend);
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see Expression::times()
+     */
+    public function times($multiplier) {
+        return new Sum($this->augend->times($multiplier), $this->addend->times($multiplier));
+    }
 }

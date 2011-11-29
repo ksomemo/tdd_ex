@@ -75,9 +75,9 @@ class Money implements Expression {
     /**
      *
      * 加法
-     * @param Money $addend
+     * @param Expression $addend
      */
-    public function plus(Money $addend) {
+    public function plus(Expression $addend) {
         return new Sum($this, $addend);
     }
 

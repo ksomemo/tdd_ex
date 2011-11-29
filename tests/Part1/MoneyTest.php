@@ -161,4 +161,34 @@ class MoneyTest extends PHPUnit_Framework_TestCase {
         $result = $bank->reduce($five_dollars->plus($ten_francs), 'USD');
         $this->assertEquals(Money::dollar(10), $result);
     }
+
+    /**
+     * レートが2：1の場合、(5ドル＋10フラン)＋5ドル＝15ドルのテスト
+     */
+    public function testSumPlusMoney() {
+        $five_dollars = Money::dollar(5);
+        $ten_francs   = Money::franc(10);
+
+        $bank = new Bank();
+        $bank->addRate('CHF', 'USD', 2);
+
+        $sum = $five_dollars->plus($ten_francs)->plus($five_dollars);
+        $result = $bank->reduce($sum, 'USD');
+        $this->assertEquals(Money::dollar(15), $result);
+    }
+
+    /**
+     * レートが2：1の場合、(5ドル＋10フラン)の2倍＝20ドルのテスト
+     */
+    public function testSumTimes() {
+        $five_dollars = Money::dollar(5);
+        $ten_francs   = Money::franc(10);
+
+        $bank = new Bank();
+        $bank->addRate('CHF', 'USD', 2);
+
+        $sum = $five_dollars->plus($ten_francs)->times(2);
+        $result = $bank->reduce($sum, 'USD');
+        $this->assertEquals(Money::dollar(20), $result);
+    }
 }
