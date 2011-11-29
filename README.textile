@@ -11,7 +11,7 @@ PHP include path C:\xammp\php\PEAR
 h2. TODO
 
 * レートが2:1の場合、$5 + 10 CHF = $10
-* $5 + $5 = $10
+* -$5 + $5 = $10-
 * $5 + $5からMoneyの返却
 * -$5 * 2 = $10-
 * -amountのプライベート化-

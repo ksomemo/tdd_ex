@@ -147,4 +147,18 @@ class MoneyTest extends PHPUnit_Framework_TestCase {
         $bank = new Bank();
         $this->assertEquals(1, $bank->rate('USD', 'USD'));
     }
+
+    /**
+     * レートが2：1の場合、5ドル＋10フラン＝10ドルのテスト
+     */
+    public function testMixedAddition() {
+        $five_dollars = Money::dollar(5);
+        $ten_francs   = Money::franc(10);
+
+        $bank = new Bank();
+        $bank->addRate('CHF', 'USD', 2);
+
+        $result = $bank->reduce($five_dollars->plus($ten_francs), 'USD');
+        $this->assertEquals(Money::dollar(10), $result);
+    }
 }
